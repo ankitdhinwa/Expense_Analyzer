@@ -4,6 +4,12 @@ import "./App.css";
 
 
 function App() {
+  const dataInNewExpenseHandler = (newData)=>{
+    console.log('In App.js File');
+    console.log(newData);
+    console.log(expenses);
+  };
+
   const expenses = [
     {
       id: "E1",
@@ -38,7 +44,7 @@ function App() {
   ];
   return (
     <div className='App'>
-      <NewExpense/>
+      <NewExpense onDataInNewExpense={dataInNewExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
   );
