@@ -16,8 +16,10 @@ function Expenses(props) {
         onChangeFilter={changeFilterHandler}
       />
       {/* Accessing ExpenseItems dynamically rather by indexing  */}
+      {/* To uniquely identify each added ExpenseItem */}
       {props.items.map((expenses) => (
         <ExpenseItem
+          key={expenses.id}
           title={expenses.title}
           amount={expenses.amount}
           date={expenses.date}
