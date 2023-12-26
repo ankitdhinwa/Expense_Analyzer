@@ -3,8 +3,8 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
@@ -21,7 +21,7 @@ const ExpenseForm = (props) => {
     // })
   };
 
-  const amountChangeHandler = (event)=>{
+  const amountChangeHandler = (event) => {
     //console.log(event.target.value);
     setEnteredAmount(event.target.value);
     // setUserInput((prevState)=>{
@@ -29,7 +29,7 @@ const ExpenseForm = (props) => {
     // })
   };
 
-  const dateChangeHandler = (event)=>{
+  const dateChangeHandler = (event) => {
     //console.log(event.target.value);
     setEnteredDate(event.target.value);
     // setUserInput((prevState)=>{
@@ -37,19 +37,20 @@ const ExpenseForm = (props) => {
     // })
   };
 
-  const submitHandler = (event)=>{
+  const submitHandler = (event) => {
     event.preventDefault();
     const userExpense = {
       title: enteredTitle,
       amount: enteredAmount,
-      date: enteredDate
-    }
+      //Date entered should be passed in format of date. So, it can matched datatype to the items in the FAKE_EXPENSES list
+      date: new Date(enteredDate),
+    };
     console.log(userExpense);
     props.onUserAddedExpense(userExpense);
 
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -57,15 +58,31 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title:</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount:</label>
-          <input type="number" min="0.01" step="0.01" value = {enteredAmount} onChange={amountChangeHandler}/>
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={enteredAmount}
+            onChange={amountChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date:</label>
-          <input type="date" min="2018-01-01" max="2025-01-01" value={enteredDate} onChange={dateChangeHandler}/>
+          <input
+            type="date"
+            min="2018-01-01"
+            max="2025-01-01"
+            value={enteredDate}
+            onChange={dateChangeHandler}
+          />
         </div>
       </div>
       <div className="new-expense__actions">
