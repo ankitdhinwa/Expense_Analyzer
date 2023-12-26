@@ -1,4 +1,4 @@
-import ExpenseForm from "./ExpenseForm";
+import ExpenseBtn from "./ExpenseBtn";
 import "./NewExpense.css";
 
 const NewExpense = (props) => {
@@ -12,7 +12,8 @@ const NewExpense = (props) => {
   }
   return (
     <div className='new-expense'>
-      <ExpenseForm onUserAddedExpense={userAddedExpenseHandler} />
+      <ExpenseBtn onDataExpense={userAddedExpenseHandler}/>
+      {/* <ExpenseForm onUserAddedExpense={userAddedExpenseHandler} /> */}
     </div>
   );
 };
